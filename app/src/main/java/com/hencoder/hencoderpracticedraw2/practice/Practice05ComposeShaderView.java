@@ -37,28 +37,12 @@ public class Practice05ComposeShaderView extends View {
     // Shader 2: BitmapShader 图片：R.drawable.batman_logo
 
     Bitmap bitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.batman);
-    //int width = bitmap1.getWidth();
-    //int height = bitmap1.getHeight();
-    //int newWidth = 200;
-    //int newHeight = 200;
-    //// 计算缩放比例
-    //float scaleWidth = ((float) newWidth) / width;
-    //float scaleHeight = ((float) newHeight) / height;
-    //Log.i(" tag ", "width : " + width + " , height : " + height);
-    //// 取得想要缩放的matrix参数
-    //Matrix matrix = new Matrix();
-    //matrix.postScale(scaleWidth, scaleHeight);
-    //// 得到新的图片
-    //Bitmap newbm = Bitmap.createBitmap(bitmap1, 0, 0, width, height, matrix, true);
     Shader shader1 = new BitmapShader(bitmap1, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-
-    //Shader shader1 =  new RadialGradient(200, 200, 200, Color.parseColor("#E91E63"), Color.parseColor("#2196F3"),
-    //    Shader.TileMode.CLAMP);
 
     Bitmap bitmap2 = BitmapFactory.decodeResource(getResources(), R.drawable.batman_logo);
     Shader shader2 = new BitmapShader(bitmap2, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
 
-    Shader shader = new ComposeShader(shader1, shader2, PorterDuff.Mode.SRC_OUT);
+    Shader shader = new ComposeShader(shader1, shader2, PorterDuff.Mode.DST_IN);
     paint.setShader(shader);
   }
 
