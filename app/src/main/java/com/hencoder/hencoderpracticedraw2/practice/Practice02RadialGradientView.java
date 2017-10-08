@@ -35,7 +35,7 @@ public class Practice02RadialGradientView extends View {
 
   @Override protected void onDraw(Canvas canvas) {
     super.onDraw(canvas);
-
     canvas.drawCircle(300, 300, 200, paint);
+
   }
 }

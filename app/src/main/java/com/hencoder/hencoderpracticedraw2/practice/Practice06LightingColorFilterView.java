@@ -12,6 +12,10 @@ import android.util.AttributeSet;
 import android.view.View;
 import com.hencoder.hencoderpracticedraw2.R;
 
+/**
+ * LightingColorFilter
+ * 模拟简单的光照效果
+ */
 public class Practice06LightingColorFilterView extends View {
   Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
   Bitmap bitmap;
@@ -36,14 +40,14 @@ public class Practice06LightingColorFilterView extends View {
     super.onDraw(canvas);
 
     // 使用 Paint.setColorFilter() 来设置 LightingColorFilter
-    ColorFilter lightingColorFilter = new LightingColorFilter(0x00ffff, 0x000000);
+    ColorFilter lightingColorFilter = new LightingColorFilter(0x00ffff, 0x000000); // mul rrb 去掉了红色
 
     paint.setColorFilter(lightingColorFilter);
 
     // 第一个 LightingColorFilter：去掉红色部分
     canvas.drawBitmap(bitmap, 0, 0, paint);
 
-    lightingColorFilter = new LightingColorFilter(0xffffff, 0x003000);
+    lightingColorFilter = new LightingColorFilter(0xffffff, 0x003000); // add 增强了绿色
 
     paint.setColorFilter(lightingColorFilter);
 

@@ -30,6 +30,7 @@ public class Practice05ComposeShaderView extends View {
   }
 
   {
+    // 关闭硬件加速
     setLayerType(LAYER_TYPE_SOFTWARE, null); // 硬件加速下 ComposeShader 不能使用两个同类型的 Shader
 
     // 用 Paint.setShader(shader) 设置一个 ComposeShader
