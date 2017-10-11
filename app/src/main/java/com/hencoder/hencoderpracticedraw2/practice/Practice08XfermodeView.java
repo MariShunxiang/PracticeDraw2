@@ -5,6 +5,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Xfermode;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -14,6 +17,11 @@ public class Practice08XfermodeView extends View {
   Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
   Bitmap bitmap1;
   Bitmap bitmap2;
+
+  Xfermode mXfermode1 = new PorterDuffXfermode(PorterDuff.Mode.SRC);
+  Xfermode mXfermode2 = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);
+  Xfermode mXfermode3 = new PorterDuffXfermode(PorterDuff.Mode.DST_OUT);
+  Xfermode mXfermode4 = new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER);
 
   public Practice08XfermodeView(Context context) {
     super(context);
@@ -43,15 +51,28 @@ public class Practice08XfermodeView extends View {
 
     canvas.drawBitmap(bitmap1, 0, 0, paint);
     // 第一个：PorterDuff.Mode.SRC
+    paint.setXfermode(mXfermode1);
     canvas.drawBitmap(bitmap2, 0, 0, paint);
+    paint.setXfermode(null);
 
     canvas.drawBitmap(bitmap1, bitmap1.getWidth() + 100, 0, paint);
     // 第二个：PorterDuff.Mode.DST_IN
+    paint.setXfermode(mXfermode2);
     canvas.drawBitmap(bitmap2, bitmap1.getWidth() + 100, 0, paint);
+    paint.setXfermode(null);
 
     canvas.drawBitmap(bitmap1, 0, bitmap1.getHeight() + 20, paint);
     // 第三个：PorterDuff.Mode.DST_OUT
+    paint.setXfermode(mXfermode3);
     canvas.drawBitmap(bitmap2, 0, bitmap1.getHeight() + 20, paint);
+    paint.setXfermode(null);
+
+    canvas.drawBitmap(bitmap1, bitmap1.getWidth() + 100, bitmap1.getHeight() + 20, paint);
+    paint.setXfermode(mXfermode4);
+    canvas.drawBitmap(bitmap2, bitmap1.getWidth() + 100, bitmap1.getHeight() + 20, paint);
+    paint.setXfermode(null);
+
+    canvas.restoreToCount(saved);
 
     // 用完之后使用 canvas.restore() 恢复 off-screen buffer
   }
