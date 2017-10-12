@@ -56,6 +56,8 @@ public class Sample15FillPathView extends View {
         canvas.drawPath(path1, pathPaint);
         canvas.restore();
 
+        //================================================
+
         canvas.save();
         canvas.translate(0, 200);
         paint.setStyle(Paint.Style.STROKE);
@@ -68,6 +70,8 @@ public class Sample15FillPathView extends View {
         canvas.translate(500, 200);
         canvas.drawPath(path2, pathPaint);
         canvas.restore();
+
+        //================================================
 
         canvas.save();
         canvas.translate(0, 400);

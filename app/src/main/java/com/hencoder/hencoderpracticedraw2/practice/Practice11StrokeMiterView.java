@@ -53,7 +53,7 @@ public class Practice11StrokeMiterView extends View {
     canvas.drawPath(path, paint);
 
     canvas.translate(0, 200);
-    paint.setStrokeMiter(100);
+    paint.setStrokeMiter(0);
     canvas.drawPath(path, paint);
 
     canvas.restore();
